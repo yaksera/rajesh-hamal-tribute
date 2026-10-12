@@ -52,10 +52,10 @@ export function About() {
     <section id="about" ref={root} className="relative border-y border-white/10 bg-ink-soft py-24 lg:py-32">
       <div className="mx-auto grid max-w-[1240px] gap-16 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
         <div>
-          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">About me</p>
+          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">{profile.copy.aboutEyebrow}</p>
           <h2 data-reveal className="mt-3 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            {profile.role} who cares about the{" "}
-            <span className="font-script text-5xl font-bold text-red sm:text-6xl">details</span>
+            {profile.copy.aboutTitle}{" "}
+            <span className="font-script text-5xl font-bold text-red sm:text-6xl">{profile.copy.aboutTitleScript}</span>
           </h2>
           {profile.about.map((para) => (
             <p key={para.slice(0, 20)} data-reveal className="mt-6 text-lg leading-relaxed text-cream/75">
@@ -89,7 +89,7 @@ export function About() {
         </div>
 
         <div data-timeline className="relative">
-          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-muted">Experience</p>
+          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-muted">{profile.copy.experienceLabel}</p>
           <ol className="relative mt-6 border-l border-white/10 pl-8">
             <span data-timeline-line aria-hidden className="absolute -left-px top-0 h-full w-px bg-red" />
             {profile.experience.map((job) => (
@@ -106,7 +106,7 @@ export function About() {
         </div>
       </div>
 
-      <div className="mt-20 overflow-hidden border-y border-white/10 py-6" aria-label="Skills">
+      <div className="mt-20 overflow-hidden border-y border-white/10 py-6" aria-label={profile.copy.skillsLabel}>
         <ul data-marquee className="flex w-max gap-4">
           {skills.map((s, i) => (
             <li

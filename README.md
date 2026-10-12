@@ -1,6 +1,6 @@
-# Cursor-tracking portfolio
+# Cursor-tracking portfolio: Rajesh Hamal fan tribute
 
-A personal portfolio whose hero character follows your mouse: head, eyes, brows and hair turn toward the cursor. Built with **Next.js 16**, **Tailwind CSS v4** and **GSAP**.
+An unofficial fan tribute to Nepali actor Rajesh Hamal, built on a cursor-tracking portfolio template. The hero character follows your mouse: head, eyes, brows and hair turn toward the cursor. Built with **Next.js 16**, **Tailwind CSS v4** and **GSAP**.
 
 ## Run it
 
@@ -13,7 +13,9 @@ npm run dev
 
 Everything personal is in **`src/content/profile.ts`**: name, role, tagline, email, socials, about text, stats, skills, experience, projects, and the character's colours (`skin`, `hair`, `eyes`, `shirt`, and `hairStyle: "long" | "short"`).
 
-- **Resume:** put your PDF at `public/resume.pdf`, or set `resumeUrl` to any link.
+- **Section headings and buttons** are in `profile.copy`. **Films** are in `profile.projects`. Please verify biographical details before publishing.
+- **Character looks:** `face: "soft" | "rugged"`, `hairStyle: "long" | "short" | "swept"`, `outfit: "tee" | "vest"`, `necklace`.
+- **Tribute framing:** the hero badge, contact intro and footer `disclaimer` keep it clear that this isn't an official site. Keep them if you publish it.
 - **Contact form:** copy `.env.example` to `.env.local` and add a [Resend](https://resend.com) API key and your inbox address. Until then, the form politely offers a mailto link instead.
 
 ## How the character works

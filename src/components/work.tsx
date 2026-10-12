@@ -14,13 +14,14 @@ export function Work() {
     <section id="work" ref={root} className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:py-32">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
-          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">Selected work</p>
+          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">{profile.copy.workEyebrow}</p>
           <h2 data-reveal className="mt-3 text-5xl font-semibold tracking-tight sm:text-6xl">
-            Things I&rsquo;ve <span className="font-script text-6xl font-bold text-red sm:text-7xl">built</span>
+            {profile.copy.workTitle}{" "}
+            <span className="font-script text-6xl font-bold text-red sm:text-7xl">{profile.copy.workTitleScript}</span>
           </h2>
         </div>
         <p data-reveal className="max-w-sm text-muted">
-          A few projects I&rsquo;m proud of, from fintech landing pages to booking systems.
+          {profile.copy.workIntro}
         </p>
       </div>
 

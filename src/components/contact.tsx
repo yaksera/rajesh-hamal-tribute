@@ -62,12 +62,13 @@ export function Contact() {
     <section id="contact" ref={root} className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:py-32">
       <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">Contact</p>
+          <p data-reveal className="text-sm font-semibold uppercase tracking-[0.3em] text-red">{profile.copy.contactEyebrow}</p>
           <h2 data-reveal className="mt-3 text-5xl font-semibold leading-[1.05] tracking-tight sm:text-7xl">
-            Let&rsquo;s build something <span className="font-script font-bold text-red">together</span>
+            {profile.copy.contactTitle}{" "}
+            <span className="font-script font-bold text-red">{profile.copy.contactTitleScript}</span>
           </h2>
           <p data-reveal className="mt-6 max-w-md text-lg text-cream/70">
-            Have a project, a role, or just an idea? My inbox is always open. I usually reply within a day.
+            {profile.copy.contactIntro}
           </p>
           <a
             data-reveal
@@ -77,6 +78,7 @@ export function Contact() {
             <Mail className="size-6" />
             {profile.email}
           </a>
+          {profile.socials.length > 0 && (
           <ul data-reveal className="mt-10 flex flex-wrap gap-3">
             {profile.socials.map((s) => (
               <li key={s.label}>
@@ -92,6 +94,7 @@ export function Contact() {
               </li>
             ))}
           </ul>
+          )}
         </div>
 
         <div data-reveal="right" className="rounded-3xl border border-white/10 bg-ink-soft p-6 sm:p-10">
@@ -99,7 +102,7 @@ export function Contact() {
             <div data-sent className="py-12 text-center">
               <CheckCircle2 className="mx-auto size-16 text-red" strokeWidth={1.5} />
               <h3 className="mt-5 text-3xl font-semibold">Message sent!</h3>
-              <p className="mt-2 text-cream/70">Thanks for reaching out. I&rsquo;ll get back to you soon.</p>
+              <p className="mt-2 text-cream/70">Thanks for writing in. It means a lot.</p>
               <button type="button" onClick={() => setStatus("idle")} className="mt-8 text-red underline underline-offset-4">
                 Send another
               </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { profile } from "@/content/profile";
 import { gsap, MOTION_OK, useGSAP } from "@/lib/gsap";
 import { Character, type Mood } from "./character";
@@ -20,8 +20,9 @@ export function Hero() {
           .from("[data-hero-hi]", { autoAlpha: 0, y: 20, duration: 0.7 }, 0.35)
           .fromTo(
             "[data-hero-name]",
-            { clipPath: "inset(0 100% 0 0)" },
-            { clipPath: "inset(0 0% 0 0)", duration: 1.4, ease: "power2.inOut" },
+            // Negative top/bottom insets leave room for descenders and the glow; cleared afterwards.
+            { clipPath: "inset(-30% 100% -40% -5%)" },
+            { clipPath: "inset(-30% 0% -40% -5%)", duration: 1.4, ease: "power2.inOut", clearProps: "clipPath" },
             0.5,
           )
           .from("[data-hero-copy]", { autoAlpha: 0, y: 20, duration: 0.8 }, 1.1)
@@ -54,38 +55,41 @@ export function Hero() {
       <div className="mx-auto grid w-full max-w-[1240px] items-end gap-0 px-5 pt-28 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:pt-0">
         <div data-hero-copy-wrap className="relative z-10 self-center pb-10 lg:pb-0">
           <p data-hero-hi className="text-lg font-semibold uppercase tracking-[0.3em] text-white/85">
-            Hi, I&rsquo;m
+            {profile.copy.heroGreeting}
           </p>
           <h1
             data-hero-name
-            className="-ml-1 font-script text-[96px] leading-[0.95] text-white drop-shadow-[0_6px_24px_rgba(80,0,10,0.35)] sm:text-[140px] lg:text-[168px]"
+            className="-ml-1 font-script text-[76px] leading-[0.95] text-white [text-shadow:0_6px_24px_rgba(80,0,10,0.35)] sm:text-[110px] lg:text-[124px]"
           >
             {profile.name}
           </h1>
           <p data-hero-copy className="mt-6 max-w-md text-lg leading-relaxed text-white/90">
             {profile.tagline}
           </p>
+          {profile.disclaimer && (
+            <p data-hero-copy className="mt-4 inline-flex rounded-full bg-black/20 px-3 py-1 text-xs uppercase tracking-widest text-white/80">
+              Unofficial fan tribute
+            </p>
+          )}
           <div className="mt-9 flex flex-wrap gap-4">
             <a
               data-hero-cta
-              href={profile.resumeUrl}
-              target="_blank"
-              rel="noreferrer"
+              href={profile.copy.primaryCta.href}
               onPointerEnter={() => setMood("curious")}
               onPointerLeave={() => setMood("neutral")}
               className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold uppercase tracking-widest text-red transition-ui hover:-translate-y-0.5 hover:bg-cream"
             >
-              Resume
-              <Download className="size-4 transition-transform group-hover:translate-y-0.5" />
+              {profile.copy.primaryCta.label}
+              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
             </a>
             <a
               data-hero-cta
-              href="#contact"
+              href={profile.copy.secondaryCta.href}
               onPointerEnter={() => setMood("happy")}
               onPointerLeave={() => setMood("neutral")}
               className="group inline-flex items-center gap-2 rounded-full border-2 border-white/90 px-7 py-3.5 text-sm font-semibold uppercase tracking-widest text-white transition-ui hover:-translate-y-0.5 hover:bg-white/10"
             >
-              Let&rsquo;s talk
+              {profile.copy.secondaryCta.label}
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
